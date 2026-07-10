@@ -11,6 +11,8 @@ description: "Task list template for feature implementation"
 
 **Tests**: The examples below include test tasks. Tests are OPTIONAL - only include them if explicitly requested in the feature specification.
 
+**Constitutional checkpoints**: Each story MUST preserve offline-first behavior, security boundaries, and an explicit verification step; update docs or quickstart guidance when behavior changes.
+
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 
 ## Format: `[ID] [P?] [Story] Description`

@@ -103,6 +103,12 @@
 - **[Entity 1]**: [What it represents, key attributes without implementation]
 - **[Entity 2]**: [What it represents, relationships to other entities]
 
+## Constitutional Constraints
+
+- The feature MUST preserve offline-first behavior for local training use.
+- The feature MUST not weaken existing authentication, authorization, or user isolation boundaries.
+- The feature MUST be verifiable with a clear manual or automated scenario.
+
 ## Success Criteria *(mandatory)*
 
 <!--

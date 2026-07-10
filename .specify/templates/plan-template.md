@@ -40,7 +40,9 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- The feature MUST preserve the offline-first, local-training behavior of the application.
+- The feature MUST not weaken authentication, authorization, or user isolation boundaries.
+- The feature MUST include a clear verification step and any needed documentation updates.
 
 ## Project Structure
 

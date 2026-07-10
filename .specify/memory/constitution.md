@@ -1,50 +1,47 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+- Version change: template placeholders -> 1.0.0
+- Modified principles: initial constitution created for ContosoDashboard
+- Added sections: Security & Privacy Requirements, Development Workflow
+- Removed sections: none
+- Templates requiring updates: ✅ .specify/templates/plan-template.md, ✅ .specify/templates/spec-template.md, ✅ .specify/templates/tasks-template.md
+- Follow-up TODOs: none
+-->
+
+# ContosoDashboard Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Training-First Scope
+Every change MUST preserve the educational purpose of ContosoDashboard. Features must be understandable in a local training environment, use the existing mock authentication and sample data model unless a feature explicitly requires a different approach, and avoid introducing complexity that obscures the lesson being taught.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Offline-First Architecture
+The application MUST remain runnable without external services or cloud dependencies. New features MUST work in a local or offline setup and use abstractions or seams for infrastructure access so cloud migration remains possible without rewriting business logic.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Security-by-Design
+All new or changed behavior MUST preserve user isolation, authorization boundaries, and protection against IDOR and other common access-control issues. Protected pages and services MUST continue to enforce the same authorization rules as the existing training implementation.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Testable and Demonstrable Behavior
+Each change MUST be verifiable by a clear manual or automated scenario before it is considered complete. When business logic changes, the implementation MUST include a regression test or a documented verification step that proves the behavior end to end.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Simplicity Over Rushed Feature Growth
+Features MUST be implemented with the smallest change that delivers the learning goal. New abstractions, dependencies, or UI patterns are allowed only when they clearly improve maintainability or support the training scenario without adding unnecessary complexity.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Security & Privacy Requirements
+New or changed functionality MUST maintain explicit, reviewable access controls and keep user data isolated by authenticated identity. Features that introduce files, data writes, or notifications MUST avoid cross-user exposure and remain suitable for local classroom use.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+## Development Workflow
+All work on this repository MUST follow the existing Spec Kit workflow: capture requirements in a feature spec, create a plan with explicit verification steps, and document the user-facing behavior that the change introduces.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- Changes that affect security, access control, or offline behavior MUST be called out in the plan and reviewed before merge.
+- Documentation and quickstart guidance MUST be updated when a feature changes how the app is run or exercised.
+- The repository MUST remain suitable for local classroom use without requiring external accounts or services.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+This constitution supersedes ad hoc shortcuts for this repository. Amendments require a documented rationale, an updated version number, and a review of any impacted templates or guidance before they are accepted.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- Changes that materially alter security posture, offline-first guarantees, or the training scope MUST be treated as a major or minor amendment and reviewed before implementation.
+- Any deviation from these principles MUST be documented with the reason, the affected scope, and the planned mitigation.
+- Compliance is evaluated during spec, plan, and implementation review by checking that new work preserves the principles above.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-07-10 | **Last Amended**: 2026-07-10
