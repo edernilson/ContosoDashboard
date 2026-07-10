@@ -8,6 +8,11 @@
 
 **Input**: User description: "Add document upload and management capabilities so Contoso employees can securely store, organize, find, share, and manage work-related documents inside ContosoDashboard."
 
+## Clarifications
+
+- Q: For the first release, should the document feature focus on core upload, organization, and access control only, or also include sharing and task integration? → A: Core upload, organization, search, and permissioned access only; defer sharing and task integration.
+- Q: How should v1 handle malware scanning for uploads? → A: No malware scanning in v1; rely on file-type and size checks for now.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Upload and organize documents (Priority: P1)
@@ -40,18 +45,18 @@ Users need to find documents quickly and view the ones they are allowed to acces
 
 ---
 
-### User Story 3 - Share, manage, and audit documents (Priority: P3)
+### User Story 3 - Manage document lifecycle and permissions (Priority: P3)
 
-Document owners and managers need to control access, keep documents updated, and maintain an auditable trail of document activity.
+Document owners and managers need to keep documents current, remove outdated items, and maintain an auditable trail of document activity.
 
-**Why this priority**: This extends the core upload workflow into governance and collaboration, which improves trust and adoption without being required for an initial release.
+**Why this priority**: This adds governance and operational control without changing the core MVP flow.
 
-**Independent Test**: A document owner or manager can update metadata, replace a file, share a document, or delete it with confirmation.
+**Independent Test**: A document owner or manager can update metadata, replace a file, or delete a document with confirmation.
 
 **Acceptance Scenarios**:
 
 1. **Given** a document owner has uploaded a document, **When** they change its metadata or replace the file, **Then** the updated document is saved and visible to authorized users.
-2. **Given** a document owner shares a document with another authorized user, **When** the share is created, **Then** the recipient receives a notification and can find the document in their shared documents view.
+2. **Given** an authorized manager confirms deletion of a document, **When** they complete the action, **Then** the document is removed and the action is logged for audit purposes.
 
 ---
 
@@ -68,14 +73,14 @@ Document owners and managers need to control access, keep documents updated, and
 
 - **FR-001**: The system MUST allow authenticated users to upload one or more supported documents with a title, category, and optional descriptive information.
 - **FR-002**: The system MUST allow users to associate a document with a project when relevant and to add custom tags for search and organization.
-- **FR-003**: The system MUST reject unsupported file types and files that exceed the configured maximum size with clear, user-facing error messages.
+- **FR-003**: The system MUST reject unsupported file types and files that exceed the configured maximum size with clear, user-facing error messages; malware scanning is not implemented in v1 and is deferred to a future integration.
 - **FR-004**: The system MUST store documents securely and ensure that only authorized users can view, download, or manage them.
 - **FR-005**: The system MUST provide a document list experience that supports sorting, filtering, and searching by title, description, tags, uploader, and project association.
 - **FR-006**: The system MUST allow document owners to update metadata and replace an uploaded file with a newer version.
 - **FR-007**: The system MUST allow document owners and designated project managers to delete documents after explicit confirmation.
-- **FR-008**: The system MUST support sharing documents with specific users or teams and notify recipients when a document is shared with them.
-- **FR-009**: The system MUST make documents available from relevant project, task, and dashboard experiences where they add value.
-- **FR-010**: The system MUST record document-related activities such as uploads, downloads, edits, shares, and deletions for audit and reporting.
+- **FR-008**: The system MUST provide document lifecycle controls for metadata updates, file replacement, and confirmed deletion in the initial release; sharing is deferred to a later iteration.
+- **FR-009**: The system MUST make documents available from relevant project and dashboard experiences where they add value; task-level attachment is deferred to a later iteration.
+- **FR-010**: The system MUST record document-related activities such as uploads, downloads, edits, replacements, and deletions for audit and reporting.
 - **FR-011**: The system MUST support preview or download of documents for the file types that are commonly used in the business workflow.
 
 ### Key Entities *(include if feature involves data)*
@@ -104,4 +109,5 @@ Document owners and managers need to control access, keep documents updated, and
 - Users will continue to access the application through the existing authenticated dashboard experience.
 - The initial release will use local storage and the existing training-friendly architecture rather than external cloud services.
 - The feature will operate within the current role-based permissions model and will not introduce a separate authorization system.
+- Sharing and task-level attachment remain out of scope for v1 and are deferred to a later iteration.
 - The application will continue to support a classroom environment where the primary need is secure local collaboration rather than enterprise-scale file hosting.
